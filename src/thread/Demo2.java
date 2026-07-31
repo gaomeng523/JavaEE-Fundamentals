@@ -1,12 +1,10 @@
 package thread;
 
-//先创建一个类，让这个类继承标准库中的Thread类
-class MyThread extends Thread {
-    // 重写父类的 run 方法
+class MyRunnable implements Runnable{
     @Override
-    public void run(){
+    public void run() {
         while(true){
-            System.out.println("hello , world");
+            System.out.println("hello , thread");
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
@@ -15,11 +13,12 @@ class MyThread extends Thread {
         }
     }
 }
-public class Demo1 {
+
+
+public class Demo2 {
     public static void main(String[] args) throws InterruptedException {
-        // 1. 创建一个Thread 的实例
-        Thread t = new MyThread();
-        // 2.启动线程
+        MyRunnable r = new MyRunnable();
+        Thread t = new Thread(r);
         t.start();
         while(true){
             System.out.println("hello , main");
