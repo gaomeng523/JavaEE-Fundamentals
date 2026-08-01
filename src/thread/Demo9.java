@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Demo9 {
     public static void main(String[] args) {
         Thread t = new Thread(() -> {
-            while(Thread.currentThread().isInterrupted()){
+            while(!Thread.currentThread().isInterrupted()){
                 System.out.println("hello thread");
                 try {
                     Thread.sleep(1000);
